@@ -19,6 +19,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# 最新有效
+myobject/**/.idea
+myobject/**/__pycache__
+myobject/**/migrations
+
+migrations/
+__pycache__/
 
 
 [参考指南]
