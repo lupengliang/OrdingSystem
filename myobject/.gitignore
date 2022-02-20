@@ -1,13 +1,14 @@
 # 忽略日志文件
 *.log
 *.pyc
+./**/*.pyc
 *.initial.*py
 
 # 忽略整个.idea目录
 .idea/
 /.idea
-./**/*/__pycache__/*
-./**/*/migrations/*
+./**/__pycache__/*
+./**/migrations/*
 
 # 忽略缓存文件
 *.cache
