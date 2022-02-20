@@ -9,7 +9,7 @@ urlpatterns = [
     path('', index.index, name="myadmin_index"),  # 后台首页
 
     # 员工信息管理路由
-    path('user/', user.index, name="myadmin_user_index"),  # 浏览
+    path('user/<int:pIndex>', user.index, name="myadmin_user_index"),  # 浏览
     path('user/add', user.add, name="myadmin_user_add"),  # 添加表单
     path('user/insert', user.insert, name="myadmin_user_insert"),  # 执行添加
     path('user/del/<int:uid>', user.delete, name="myadmin_user_delete"),  # 执行删除
