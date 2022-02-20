@@ -1,8 +1,7 @@
 # 忽略日志文件
 *.log
 *.pyc
-./**/*.pyc
-*.initial.*py
+*.*initial*.*py
 
 # 忽略整个.idea目录
 .idea/
