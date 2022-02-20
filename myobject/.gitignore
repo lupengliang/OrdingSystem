@@ -2,6 +2,11 @@
 *.log
 *.pyc
 *.*initial*.*py
+mobile/**/*.pyc
+myadmin/**/*.pyc
+static/**/*.pyc
+templates/**/*.pyc
+web/**/*.pyc
 
 # 忽略整个.idea目录
 .idea/
