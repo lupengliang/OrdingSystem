@@ -1,13 +1,13 @@
 # 忽略日志文件
 *.log
 *.pyc
-*.initial.py
+*.initial.*py
 
 # 忽略整个.idea目录
 .idea/
 /.idea
-*/__pycache__
-*/migrations/*
+./**/*/__pycache__/*
+./**/*/migrations/*
 
 # 忽略缓存文件
 *.cache
@@ -18,15 +18,6 @@
 ENV/
 env.bak/
 venv.bak/
-
-# 最新有效
-myobject/**/.idea
-myobject/**/__pycache__
-myobject/**/migrations
-
-migrations/
-__pycache__/
-
 
 [参考指南]
 # no .a files
