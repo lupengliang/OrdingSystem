@@ -1,0 +1,36 @@
+# 忽略日志文件
+*.log
+*.pyc
+*.initial.py
+
+# 忽略整个.idea目录
+.idea/
+/.idea
+*/__pycache__
+*/migrations/*
+
+# 忽略缓存文件
+*.cache
+
+# 忽略虚拟环境
+.env
+.venv
+ENV/
+env.bak/
+venv.bak/
+
+
+
+[参考指南]
+# no .a files
+*.a
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+# ignore all files in the build/ directory
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+# ignore all .pdf files in the doc/ directory
+doc/**/*.pdf
