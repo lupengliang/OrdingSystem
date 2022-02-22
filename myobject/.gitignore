@@ -2,17 +2,14 @@
 *.log
 *.pyc
 *.*initial*.*py
-mobile/**/*.pyc
-myadmin/**/*.pyc
-static/**/*.pyc
-templates/**/*.pyc
-web/**/*.pyc
+myobject/**/*.pyc
 
 # 忽略整个.idea目录
 .idea/
 /.idea
-./**/__pycache__/*
-./**/migrations/*
+migrations/
+__pycache__/
+views/
 
 # 忽略缓存文件
 *.cache
