@@ -2,14 +2,15 @@
 *.log
 *.pyc
 *.*initial*.*py
-myobject/**/*.pyc
 
 # 忽略整个.idea目录
 .idea/
 /.idea
 migrations/
+/migrations
 __pycache__/
 views/
+
 
 # 忽略缓存文件
 *.cache
