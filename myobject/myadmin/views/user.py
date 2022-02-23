@@ -12,8 +12,9 @@ from myadmin.models import User
 def index(request, pIndex=1):
     """浏览信息"""
     umod = User.objects
-    ulist = umod.filter(status_lt=9)
+    ulist = umod.filter(status__lt=9)
     mywhere = []
+
     # 获取并判断搜索条件
     kw = request.GET.get('keyword', None)
     if kw:  # Q表示或者的条件
@@ -39,6 +40,7 @@ def index(request, pIndex=1):
     context = {"userlist": list2, 'plist': plist, 'pIndex': pIndex, 'maxpages': maxpages, 'mywhere': mywhere}
     return render(request, "myadmin/user/index.html", context)
 
+
 def add(request):
     """加载信息添加表单"""
     try:
@@ -53,8 +55,10 @@ def add(request):
         context = {'info': "添加成功！"}
     except Exception as err:
         print(err)
+        print(err)
         context = {'info': "添加失败！"}
-    return render(request, "myadmin/info.html", context)
+    # return render(request, "myadmin/info.html", context)
+    return HttpResponse("ok")
 
 def insert(request):
     """执行信息添加"""
