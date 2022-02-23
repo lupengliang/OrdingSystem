@@ -15,7 +15,7 @@
     </section>
 
     <!-- Main content -->
-    <section>
+    <section class="content container-fluid">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
@@ -25,7 +25,8 @@
                         <div class="box-tools">
                             <form action="{% url 'myadmin_user_index' 1 %}" method="get">
                                 <div class="input-group input-group-sm" style="width:150px;">
-                                    <input type="text" name="keyword" class="form-control pull-right">
+                                    <input type="text" name="keyword" class="form-control pull-right"
+                                           placeholder="search">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-default"></button>
                                     </div>
@@ -64,8 +65,8 @@
                                             <span style="color:red">未知状态</span>
                                         {% endif %}
                                         {{ vo.status }}</td>
-                                    <td>{{ vo.create_at|date: 'Y-m-d H:i:s' }}</td>
-                                    <td>{{ vo.update_at|date: 'Y-m-d H:i:s' }}</td>
+                                    <td>{{ vo.create_at }}</td>
+                                    <td>{{ vo.update_at }}</td>
                                     <td>
                                         <button type="button" class="btn btn-success btn-xs"></button>
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -78,21 +79,28 @@
                             {% endfor %}
                         </table>
                     </div>
+
                     <!-- /.box-body -->
-                    <div class="box-footer clearfix"></div>
-                    <a role="button" href="#" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">添加员工</span>
-                    </a>
-                    <ul class="pagination pagination-sm no-margin pull-right">
-                        <li><a href="{% url 'myadmin_user_index' pIndex|add:-1 %}?{{ mywhere|join:'&' }}">&laquo;</a></li>
-                        {% for p in plist %}
-                            <li {% if p == pIndex %} class="active" {% endif %}><a href="{% url 'myadmin_user_index' p %}?{{ mywhere|join:'&'}}">{{ p }}</a></li>
-                        {% endfor %}
-                        <li><a href="{% url 'myadmin_user_index' pIndex|add:1 %}?{{ mywhere|join:'&'}}">&raquo;</a></li>
-                    </ul>
+                    <div class="box-footer clearfix">
+                        <a role="button" href="#" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">添加员工</span>
+                        </a>
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            <li>
+                                <a href="{% url 'myadmin_user_index' pIndex|add:-1 %}?{{ mywhere|join:'&' }}">&laquo;</a>
+                            </li>
+                            {% for p in plist %}
+                                <li {% if p == pIndex %} class="active" {% endif %}><a
+                                        href="{% url 'myadmin_user_index' p %}?{{ mywhere|join:'&' }}">{{ p }}</a></li>
+                            {% endfor %}
+                            <li><a href="{% url 'myadmin_user_index' pIndex|add:1 %}?{{ mywhere|join:'&' }}">&raquo;</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <!-- /.box -->
+
             </div>
-            <!-- /.box -->
         </div>
     </section>
     <!-- /.content -->
