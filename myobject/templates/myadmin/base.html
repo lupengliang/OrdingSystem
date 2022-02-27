@@ -411,4 +411,19 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. -->
 </body>
+
+<script type="text/javascript">
+    function doDel(url) {
+        Modal.confirm({
+            msg: "确定要删除吗？ ",
+            title: ' 信息提示',
+            btnok: '确定',
+            btncl: '取消'
+        }).on(function (e){
+            if (e){
+                window.location.href=url;
+            }
+        });
+    }
+</script>
 </html>

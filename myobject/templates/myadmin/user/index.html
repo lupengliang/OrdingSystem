@@ -65,15 +65,16 @@
                                             <span style="color:red">未知状态</span>
                                         {% endif %}
                                         {{ vo.status }}</td>
-                                    <td>{{ vo.create_at }}</td>
-                                    <td>{{ vo.update_at }}</td>
+                                    <td>{{ vo.create_at|date:'Y-m-d H:i:s' }}</td>
+                                    <td>{{ vo.update_at|date:'Y-m-d H:i:s' }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-xs"></button>
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                        <button type="button" class="btn btn-success btn-xs"></button>
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                        <button type="button" class="btn btn-success btn-xs"></button>
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        <button type="button" class="btn btn-success btn-xs">
+                                            <a href="{% url 'myadmin_user_edit' vo.id %}" style="color: white"><span class="glyphicon glyphicon-edit" aria-hidden="true"> 编辑</span></a>
+
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <a href="{% url 'myadmin_user_delete' vo.id %}" style="color: white"><span class="glyphicon glyphicon-trash" aria-hidden="true"> 删除</span></a>
+                                        </button>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -82,7 +83,7 @@
 
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a role="button" href="#" class="btn btn-primary">
+                        <a role="button" href="{% url 'myadmin_user_add' %}" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true">添加员工</span>
                         </a>
                         <ul class="pagination pagination-sm no-margin pull-right">

@@ -18,39 +18,39 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h2 class="box-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>添加员工信息</h2>
+                    <h2 class="box-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>编辑员工信息</h2>
                 </div>
                 <!-- /.box-header -->
                 <!-- /.form start -->
-                <form class="form-horizontal" action="{% url 'myadmin_user_insert' %}" method="post">
+                <form class="form-horizontal" action="{% url 'myadmin_user_update' user.id %}" method="post">
                     {% csrf_token %}
                     <div class="box-body">
                         <div class="form-group">
                             <label for="inputEmail13" class="col-sm-2 control-label">员工账号：</label>
 
                             <div class="col-sm-4">
-                                <input type="text" name="username" class="form-control" id="inputEmail13" placeholder="员工账号">
+                                <input type="text" name="username" value="{{ user.username }}" class="form-control" id="inputEmail13" placeholder="员工账号">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail13" class="col-sm-2 control-label">昵称：</label>
 
                             <div class="col-sm-4">
-                                <input type="text" name="nickname" class="form-control" id="inputEmail13" placeholder="昵称">
+                                <input type="text" name="nickname" value="{{ user.nickname }}" class="form-control" id="inputEmail13" placeholder="昵称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail13" class="col-sm-2 control-label">密码：</label>
+                            <label for="inputEmail13" class="col-sm-2 control-label">添加时间：</label>
 
                             <div class="col-sm-4">
-                                <input type="password" name="password" class="form-control">
+                                {{ user.create_at|date:'Y-m-d H:i:s' }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail13" class="col-sm-2 control-label">重复密码：</label>
+                            <label for="inputEmail13" class="col-sm-2 control-label">修改时间：</label>
 
                             <div class="col-sm-4">
-                                <input type="password" name="repassword" class="form-control">
+                                {{ user.update_at|date:'Y-m-d H:i:s' }}
                             </div>
                         </div>
                         <!-- /.box-body -->
