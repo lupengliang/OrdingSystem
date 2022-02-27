@@ -1,12 +1,12 @@
 # 员工信息管理的视图文件
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.shortcuts import render
+
+from myadmin.models import User
 
 from datetime import datetime
 
-from myadmin.models import User
 
 # Create your views here.
 def index(request, pIndex=1):
@@ -53,7 +53,7 @@ def insert(request):
         ob.nickname = request.POST['nickname']
 
         # 将当前员工信息的密码做md5处理
-        import hashlib, random
+        import random, hashlib
         md5 = hashlib.md5()
         n = random.randint(100000, 999999)
         s = request.POST['password'] + str(n)  # 从表单中获取密码并添加干扰值
@@ -61,25 +61,50 @@ def insert(request):
         ob.password_hash = md5.hexdigest()  # 获取md5值
         ob.password_salt = n
         ob.status = 1
-        ob.username = request.POST['username']
-        ob.create_at = request.POST['create_at']
-        ob.update_at = request.POST['update_at']
+        ob.create_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        ob.update_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         ob.save()
         context = {'info': "添加成功！"}
     except Exception as err:
-        print(err)
         print(err)
         context = {'info': "添加失败！"}
     return render(request, "myadmin/info.html", context)
 
 def delete(request, uid=0):
     """执行信息删除"""
-    pass
+    try:
+        ob = User.objects.get(id=uid)
+        ob.status = 9
+        ob.update_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        ob.save()
+        context = {'info': "删除成功！"}
+    except Exception as err:
+        print(err)
+        context = {'info': "删除失败！"}
+    return render(request, "myadmin/info.html", context)
 
 def edit(request, uid=0):
     """加载信息编辑表单"""
-    pass
+    try:
+        ob = User.objects.get(id=uid)
+        context = {'user': ob}
+        return render(request, "myadmin/user/edit.html", context)
+    except Exception as err:
+        print(err)
+        context = {"info": "没有找到要修改的信息！"}
+        return render(request, "myadmin/info.html", context)
 
 def update(request, uid):
     """执行信息编辑"""
-    pass
+    try:
+        ob = User.objects.get(id=uid)
+        ob.nickname = request.POST['nickname']
+        ob.status = request.POST['status']
+        ob.update_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        ob.save()
+        context = {'info': "修改成功！"}
+    except Exception as err:
+        print(err)
+        context = {'info': "修改成功！"}
+    return render(request, "myadmin/info.html", context)
+
