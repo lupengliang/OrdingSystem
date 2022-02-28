@@ -18,7 +18,8 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h2 class="box-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>编辑员工信息</h2>
+                    <h2 class="box-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>编辑员工信息
+                    </h2>
                 </div>
                 <!-- /.box-header -->
                 <!-- /.form start -->
@@ -29,14 +30,16 @@
                             <label for="inputEmail13" class="col-sm-2 control-label">员工账号：</label>
 
                             <div class="col-sm-4">
-                                <input type="text" name="username" value="{{ user.username }}" class="form-control" id="inputEmail13" placeholder="员工账号">
+                                <input type="text" name="username" value="{{ user.username }}" class="form-control"
+                                       id="inputEmail13" placeholder="员工账号">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail13" class="col-sm-2 control-label">昵称：</label>
 
                             <div class="col-sm-4">
-                                <input type="text" name="nickname" value="{{ user.nickname }}" class="form-control" id="inputEmail13" placeholder="昵称">
+                                <input type="text" name="nickname" value="{{ user.nickname }}" class="form-control"
+                                       id="inputEmail13" placeholder="昵称">
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,6 +54,18 @@
 
                             <div class="col-sm-4">
                                 {{ user.update_at|date:'Y-m-d H:i:s' }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail13" class="col-sm-2 control-label">当前状态：</label>
+                            <div class="controls">
+                                &nbsp; &nbsp;
+                                <input type="radio" name="status" class="input-xlarge" value="1"
+                                {% if user.status == 1 %}checked{% endif %} /> 正常
+                                <input type="radio" name="status" class="input-xlarge" value="2"
+                                {% if user.status == 2 %}checked{% endif %} /> 禁用
+                                <input type="radio" name="status" class="input-xlarge" value="6"
+                                {% if user.status == 6 %}checked{% endif %} /> 管理员
                             </div>
                         </div>
                         <!-- /.box-body -->
