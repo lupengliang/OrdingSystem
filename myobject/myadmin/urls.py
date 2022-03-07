@@ -12,6 +12,7 @@ urlpatterns = [
     path('login', index.login, name="myadmin_login"),  # 加载登录表单
     path('dologin', index.dologin, name="myadmin_dologin"),  # 执行登录
     path('logout', index.logout, name="myadmin_logout"),  # 退出
+    path('verify', index.verify, name="myadmin_verify"),  # 验证码
 
     # 员工信息管理路由
     path('user/<int:pIndex>', user.index, name="myadmin_user_index"),  # 浏览
