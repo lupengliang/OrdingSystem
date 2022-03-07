@@ -28,7 +28,7 @@ def index(request, pIndex=1):
 
     # 执行分页处理
     pIndex = int(pIndex)
-    page = Paginator(ulist, 5)  # 每页5条数据分页
+    page = Paginator(ulist, 10)  # 每页5条数据分页
     maxpages = page.num_pages  # 获取最大页数
     # 判断当前页是否越界
     if pIndex > maxpages:
@@ -66,6 +66,7 @@ def insert(request):
         ob.save()
         context = {'info': "添加成功！"}
     except Exception as err:
+        print(f"\033[1;40;32m{err}\033[0m")
         print(err)
         context = {'info': "添加失败！"}
     return render(request, "myadmin/info.html", context)

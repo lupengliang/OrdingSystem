@@ -181,7 +181,7 @@ desired effect
                             <!-- The user image in the navbar-->
                             <img src="https://img0.baidu.com/it/u=1586750472,1368684535&fm=253&fmt=auto&app=138&f=JPEG?w=421&h=431" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">{{ request.user_obj.username }}</span>
+                            <span class="hidden-xs">{{ request.session.adminuser.nickname }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -190,8 +190,8 @@ desired effect
                                      alt="User Image">
 
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    {{ request.session.adminuser.nickname }} - 管理员
+                                    <small>{{ request.session.adminuser.create_at }}加入</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -215,7 +215,7 @@ desired effect
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="" class="btn btn-default btn-flat">退 出</a>
+                                    <a href="{% url 'myadmin_logout' %}" class="btn btn-default btn-flat">退 出</a>
                                 </div>
                             </li>
                         </ul>
@@ -240,7 +240,7 @@ desired effect
                     <img src="https://img0.baidu.com/it/u=1586750472,1368684535&fm=253&fmt=auto&app=138&f=JPEG?w=421&h=431" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>{{ request.user_obj.username }}</p>
+                    <p>{{ request.session.adminuser.nickname }}－管理员</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
                 </div>
