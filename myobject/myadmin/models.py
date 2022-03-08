@@ -17,3 +17,22 @@ class User(models.Model):
 
     class Meta:
         db_table = "user"  # 更改表名
+
+
+# 店铺信息模型
+class Shop(models.Model):
+    name = models.CharField(max_length=255)  # 店铺名称
+    cover_pic = models.CharField(max_length=255)  # 封面图片
+    banner_pic = models.CharField(max_length=255)  # 图标Logo
+    address = models.CharField(max_length=255)  # 店铺地址
+    phone = models.CharField(max_length=255)  # 联系电话
+    status = models.IntegerField(default=1)  # 状态1正常/2暂停/9删除
+    create_at = models.DateTimeField(default=datetime.now)  # 创建时间
+    update_at = models.DateTimeField(default=datetime.now)  # 修改时间
+
+    def toDict(self):
+        shopname = self.name.split("-")
+        return {'id': self.id, 'name': shopname[0], 'shop': shopname[1], 'cover_pic': self.cover_pic, 'banner_pic': self.banner_pic}
+
+    class Meta:
+        db_table = "shop"  # 更改表名
