@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            员工管理
+            店铺管理
             <small>订餐系统后台管理</small>
         </h1>
         <ol class="breadcrumb">
@@ -14,58 +14,52 @@
         </ol>
     </section>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h2 class="box-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>编辑员工信息
-                    </h2>
-                </div>
-                <!-- /.box-header -->
-                <!-- /.form start -->
-                <form class="form-horizontal" action="{% url 'myadmin_user_update' user.id %}" method="post">
-                    {% csrf_token %}
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="inputEmail13" class="col-sm-2 control-label">员工账号：</label>
-
-                            <div class="col-sm-4">
-                                <input type="text" name="username" value="{{ user.username }}" class="form-control"
-                                       id="inputEmail13" placeholder="员工账号">
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h2 class="box-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true">添加店铺信息</span></h2>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" action="{% url 'myadmin_shop_insert' %}" method="post"
+                          enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail13" class="col-sm-2 control-label">店铺名称:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="name" class="form-control" id="inputText1"
+                                           placeholder="公司名称-店铺名称">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail13" class="col-sm-2 control-label">昵称：</label>
-
-                            <div class="col-sm-4">
-                                <input type="text" name="nickname" value="{{ user.nickname }}" class="form-control"
-                                       id="inputEmail13" placeholder="昵称">
+                            <div class="form-group">
+                                <label for="inputEmail13" class="col-sm-2 control-label">联系电话:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="phone" class="form-control" id="inputText2"
+                                           placeholder="联系电话">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail13" class="col-sm-2 control-label">添加时间：</label>
-
-                            <div class="col-sm-4">
-                                {{ user.create_at|date:'Y-m-d H:i:s' }}
+                            <div class="form-group">
+                                <label for="inputEmail13" class="col-sm-2 control-label">具体地址:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="address" class="form-control" id="inputText3"
+                                           placeholder="具体地址">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail13" class="col-sm-2 control-label">修改时间：</label>
-
-                            <div class="col-sm-4">
-                                {{ user.update_at|date:'Y-m-d H:i:s' }}
+                            <div class="form-group">
+                                <label for="inputEmail13" class="col-sm-2 control-label">店铺封面:</label>
+                                <div class="col-sm-4">
+                                    <input type="file" name="cover_pic"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail13" class="col-sm-2 control-label">当前状态：</label>
-                            <div class="controls">
-                                &nbsp; &nbsp;
-                                <input type="radio" name="status" class="input-xlarge" value="1"
-                                {% if user.status == 1 %}checked{% endif %} /> 正常
-                                <input type="radio" name="status" class="input-xlarge" value="2"
-                                {% if user.status == 2 %}checked{% endif %} /> 禁用
-                                <input type="radio" name="status" class="input-xlarge" value="6"
-                                {% if user.status == 6 %}checked{% endif %} /> 管理员
+                            <div class="form-group">
+                                <label for="inputEmail13" class="col-sm-2 control-label">店铺logo:</label>
+                                <div class="col-sm-4">
+                                    <input type="file" name="banner_pic"/>
+                                </div>
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -75,10 +69,15 @@
                                 <button type="submit" class="btn btn-default">重置</button>
                             </div>
                         </div>
-                    </div>
-                </form>
+                        <!-- /.box-footer -->
+                    </form>
+
+                </div>
+                <!-- /.box -->
             </div>
         </div>
-    </div>
+    </section>
+    <!-- /.content -->
+
 
 {% endblock %}
