@@ -71,7 +71,7 @@
                                             <a href="{% url 'myadmin_category_delete' vo.id %}" style="color: white"><span class="glyphicon glyphicon-trash" aria-hidden="true"> 删除</span></a>
                                         </button>
                                         <button type="button" class="btn btn-warning btn-xs">
-                                            <a href="{% url 'myadmin_category_delete' vo.id %}" style="color: white"><span class="glyphicon glyphicon-search" aria-hidden="true"> 查看菜品</span></a>
+                                            <a href="{% url 'myadmin_product_index' 1 %}?category_id={{ vo.id }}" style="color: white"><span class="glyphicon glyphicon-search" aria-hidden="true"> 查看菜品</span></a>
                                         </button>
                                     </td>
                                 </tr>

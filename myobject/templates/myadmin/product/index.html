@@ -41,37 +41,43 @@
                             <tr>
                                 <th>ID</th>
                                 <th>店铺名称</th>
-                                <th>类别名称</th>
-                                <th>当前状态</th>
+                                <th>菜品分类</th>
+                                <th>菜品图片</th>
+                                <th>菜品名称</th>
+                                <th>单价</th>
+                                <th width="45">状态</th>
                                 <th>添加时间</th>
-                                <th>修改时间</th>
                                 <th>操作</th>
                             </tr>
-                            {% for vo in categorylist %}
+                            {% for vo in productlist %}
                                 <tr>
                                     <td>{{ vo.id }}</td>
                                     <td>{{ vo.shopname }}</td>
+                                    <td>{{ vo.categoryname }}</td>
+                                    <td><img src="/static/uploads/product/{{ vo.cover_pic }}" width="30"></td>
                                     <td>{{ vo.name }}</td>
+                                    <td>{{ vo.price }}</td>
                                     <td>
                                         {% if vo.status == 1 %}
                                             <span style="color:green">正常</span>
+                                        {% elif vo.status == 2 %}
+                                            <span style="color:red">停售</span>
                                         {% elif vo.status == 9 %}
-                                            <span style="color:red">删除</span>
+                                            <span style="color:red">已删除</span>
                                         {% else %}
                                             <span style="color:red">未知状态</span>
                                         {% endif %}
                                     </td>
-                                    <td>{{ vo.create_at|date:'Y-m-d' }}</td>
-                                    <td>{{ vo.update_at|date:'Y-m-d' }}</td>
-                                    <td>
+                                    <td width="10%">{{ vo.create_at|date:'Y-m-d' }}</td>
+                                    <td width="20%">
                                         <button type="button" class="btn btn-success btn-xs">
-                                            <a href="{% url 'myadmin_category_edit' vo.id %}" style="color: white"><span class="glyphicon glyphicon-edit" aria-hidden="true"> 编辑</span></a>
+                                            <a href="{% url 'myadmin_product_edit' vo.id %}" style="color: white"><span class="glyphicon glyphicon-edit" aria-hidden="true"> 编辑</span></a>
                                         </button>
                                         <button type="button" class="btn btn-danger btn-xs">
-                                            <a href="{% url 'myadmin_category_delete' vo.id %}" style="color: white"><span class="glyphicon glyphicon-trash" aria-hidden="true"> 删除</span></a>
+                                            <a href="{% url 'myadmin_product_delete' vo.id %}" style="color: white"><span class="glyphicon glyphicon-trash" aria-hidden="true"> 删除</span></a>
                                         </button>
                                         <button type="button" class="btn btn-warning btn-xs">
-                                            <a href="{% url 'myadmin_category_delete' vo.id %}" style="color: white"><span class="glyphicon glyphicon-search" aria-hidden="true"> 查看菜品</span></a>
+                                            <a href="{% url 'myadmin_product_delete' vo.id %}" style="color: white"><span class="glyphicon glyphicon-search" aria-hidden="true"> 销量</span></a>
                                         </button>
                                     </td>
                                 </tr>
@@ -81,7 +87,7 @@
 
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a role="button" href="{% url 'myadmin_category_add' %}" class="btn btn-primary">
+                        <a role="button" href="{% url 'myadmin_product_add' %}" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true">添加店铺</span>
                         </a>
                         <ul class="pagination pagination-sm no-margin pull-right">

@@ -400,6 +400,7 @@ desired effect
 
 <!-- REQUIRED JS SCRIPTS -->
 
+
 <!-- jQuery 3 -->
 <script src="{% static 'myadmin/jquery-3.2.1.js' %}"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -425,5 +426,8 @@ desired effect
         });
     }
 </script>
+
+{% block loadjavascript %}
+{% endblock loadjavascript %}
 </body>
 </html>

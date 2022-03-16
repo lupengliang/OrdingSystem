@@ -35,6 +35,7 @@ urlpatterns = [
 
     # 菜品类别信息管理路由
     path('category/<int:pIndex>', category.index, name="myadmin_category_index"),  # 浏览
+    path('category/load/<int:sid>', category.loadCategory, name="myadmin_category_load"),  ###
     path('category/add', category.add, name="myadmin_category_add"),  # 添加表单
     path('category/insert', category.insert, name="myadmin_category_insert"),  # 执行添加
     path('category/del/<int:cid>', category.delete, name="myadmin_category_delete"),  # 执行删除
