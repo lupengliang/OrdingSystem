@@ -36,7 +36,7 @@
                                 <div class="col-sm-4">
                                     <select name="shop_id" id="shop_id" class="form-control select2" style="width: 180px">
                                         {% for svo in shoplist %}
-                                            <option value="{{ svo.id }}" {% if product.shop_id == svo.id %}selected{% endif %}>{{ svo.name }}</option>
+                                            <option value="{{ svo.id }}" onchange="doLoadCategory(0)" {% if product.shop_id == svo.id %}selected{% endif %}>{{ svo.name }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
